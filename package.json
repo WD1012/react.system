@@ -1,0 +1,8 @@
+{
+  "name": "react.stystem",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/WD1012/react.system.git",
+  "author": "<wangdan@dycd.com>",
+  "license": "MIT"
+}
