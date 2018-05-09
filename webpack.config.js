@@ -5,6 +5,7 @@ const path = require('path');
 const HtmlWebpackPlugin= require('html-webpack-plugin');
 const ExtractTextPlugin= require('extract-text-webpack-plugin');
 const webpack = require('webpack');
+const proxy = require('http-proxy-middleware');
 
 module.exports = {
 	entry: './src/app.jsx',
@@ -106,10 +107,19 @@ module.exports = {
 	// webpack-dev-server的处理
 	devServer: {
 		// contentBase:'./dist',
-		port : 8888,
 		// 404或未知页面访问
 		historyApiFallback:{
 			index:'/dist/index.html'
+		},
+		port:'8888',
+		proxy:{
+			'/manage':{
+				target: 'http://admintest.happymmall.com',
+				changeOrigin: true,
+				pathRewrite: {
+					'^/manage': '/manage'
+				}
+			}
 		}
 	}
 };
