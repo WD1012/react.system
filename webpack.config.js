@@ -5,12 +5,20 @@ const path = require('path');
 const HtmlWebpackPlugin= require('html-webpack-plugin');
 const ExtractTextPlugin= require('extract-text-webpack-plugin');
 const webpack = require('webpack');
+
 module.exports = {
 	entry: './src/app.jsx',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/dist/',
 		filename: 'js/app.js'
+	},
+	// 固定路径配置
+	resolve:{
+		alias :{
+			page : path.resolve(__dirname,'src/page'),
+			component : path.resolve(__dirname,'src/component')
+		}
 	},
 	module: {
 		rules: [
@@ -84,7 +92,8 @@ module.exports = {
 	plugins: [
 		// html配置
 		new HtmlWebpackPlugin({
-			template:'./src/index.html'
+			template:'./src/index.html',
+			favicon:'./favicon.ico'
 		}),
 		// 独立css文件
 		new ExtractTextPlugin("css/[name].css"),
@@ -97,6 +106,12 @@ module.exports = {
 	// webpack-dev-server的处理
 	devServer: {
 		// contentBase:'./dist',
-		port : 8888
+		port : 8888,
+		// 404或未知页面访问
+		historyApiFallback:{
+			index:'/dist/index.html'
+		}
 	}
 };
+
+
