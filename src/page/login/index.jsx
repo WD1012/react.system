@@ -2,8 +2,10 @@
  * Created by wangdan on 2018/5/9.
  */
 import React, {Component} from 'react';
+import { history } from "react-router-dom";
 import axios from 'axios';
 import './index.scss'
+
 
 class Login extends React.Component {
 	constructor(props) {
@@ -14,17 +16,25 @@ class Login extends React.Component {
 			password:''
 		}
 	}
+	componentWillMount(){
+		document.title = '登录' + '- HAPPY MMALL'
+	}
 	ChangeInput(e){
 		let InputName = e.target.name,
 			InputValue = e.target.value;
-
 		this.setState({
 			[InputName]:InputValue,
 			flag:true
 		})
 	}
+	GetQueryString(key) {
+		let reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		let result = window.location.search.substr(1).match(reg);
+		return result?decodeURIComponent(result[2]):null;
+	}
 	ClickBtn(){
 		let self = this;
+		let reduce =self.GetQueryString("reduce");
 		if(this.state.flag){
 			axios({
 				method:'post',
@@ -35,12 +45,21 @@ class Login extends React.Component {
 				}
 			}).then(function(response){
 				console.log(response.data)
+				if(response.data.status == 0){
+					// 登录成功
+					localStorage.setItem('username',response.data.data.username)
+					self.props.history.push(reduce);
+				}else if(response.data.status == 10){
+					//没有登录状态，强制登录
+					alert('未登录');
+				}else{
+					alert(response.data.msg);
+				}
 			}).catch(function(error){
-				console.log(error)
+				console.log(error);
 			})
 		}else{
 			return false;
-
 		}
 	}
 	render() {

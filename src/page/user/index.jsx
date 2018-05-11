@@ -13,7 +13,21 @@ class User extends React.Component{
 	}
 	render(){
 		return (
-			<div className="user-list">用户列表</div>
+			<div id="page-wrapper">
+				<div className="user-list">
+					<table className="table table-bordered">
+						<tbody>
+							<tr>
+								<td>ID</td>
+								<td>用户名</td>
+								<td>邮箱</td>
+								<td>电话</td>
+								<td>注册时间</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		)
 	}
 }

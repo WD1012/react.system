@@ -515,3 +515,30 @@ ul.nav.nav-second-level.collapse.in {
         font-size:19px;
     }
 }
+
+
+.page-wrapper{
+    text-align:center;
+    .box-bg1{
+        margin:30px;
+        color:#fff;
+        background: yellow!important;
+    }
+    .box-bg2{
+        margin:30px;
+        color:#fff;
+        background: greenyellow!important;
+    }
+    .box-bg3{
+        margin:30px;
+        color:#fff;
+        background: deepskyblue!important;
+    }
+    .box-num:hover{
+        transform: scale(1.1,1.1);
+        .num-p{
+            color:#000;
+        }
+    }
+}
+
