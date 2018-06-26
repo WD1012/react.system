@@ -3,6 +3,7 @@
  */
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 class TopNav extends React.Component {
@@ -16,14 +17,32 @@ class TopNav extends React.Component {
 	componentWillMount(){
 		let self = this;
 		self.setState({
-			userName:localStorage.getItem('username')
+			userName:sessionStorage.getItem('username')
 		})
 	}
 	ClickT(){
-		localStorage.setItem('username','');
+
+		axios({
+			url:'/user/logout.do',
+			method:'post',
+			params:{
+
+			}
+		}).then(function(response){
+			console.log(response.data);
+			let data = response.data;
+			if(data.status == 0){
+				//退出成功
+				sessionStorage.setItem('username','');
+				let reduce  = window.location.pathname;
+				window.location.href='/login?reduce='+reduce;
+			}
+		}).catch(function(error){
+			console.log(error)
+		})
 	}
 	render() {
-		let reduce  = window.location.pathname;
+
 		return (
 			<div className="navbar navbar-default top-navbar" role="navigation">
 				<div className="navbar-header">
@@ -44,7 +63,7 @@ class TopNav extends React.Component {
 
 						<ul className="dropdown-menu dropdown-user">
 							<li className="dropdown-item" onClick={()=> {this.ClickT()}}>
-								<a href={'/login?reduce='+reduce }>
+								<a>
 									<i className="fa fa-sign-out fa-fw"></i> 退出登录
 								</a>
 							</li>

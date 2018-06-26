@@ -21,17 +21,17 @@ class SildeNav extends React.Component {
 							</NavLink>
 						</li>
 						<li className="active">
-							<Link to="/product">
+							<Link to="/product/1">
 								<i className="fa fa-list"></i>
 								<span>商品</span>
 								<span className="fa arrow"></span>
 							</Link>
 							<ul className="nav nav-second-level collapse in">
 								<li>
-									<NavLink to="/product" activeClassName="active-menu">商品管理</NavLink>
+									<NavLink to="/product/1" activeClassName="active-menu">商品管理</NavLink>
 								</li>
 								<li>
-									<NavLink to="/product-category" activeClassName="active-menu">品类管理</NavLink>
+									<NavLink to="/product/2" activeClassName="active-menu">品类管理</NavLink>
 								</li>
 							</ul>
 						</li>
@@ -48,13 +48,13 @@ class SildeNav extends React.Component {
 							</ul>
 						</li>
 						<li>
-							<Link to="/user">
+							<Link to="/a/a">
 								<i className="fa fa-user-o fa-fw"></i>
 								<span>用户</span>
 							</Link>
 							<ul className="nav nav-second-level collapse in">
 								<li>
-									<NavLink to="/user" activeClassName="active-menu">用户列表</NavLink>
+									<NavLink to="/a/a" activeClassName="active-menu">用户列表</NavLink>
 								</li>
 							</ul>
 						</li>

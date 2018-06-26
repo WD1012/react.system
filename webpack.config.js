@@ -7,11 +7,17 @@ const ExtractTextPlugin= require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const proxy = require('http-proxy-middleware');
 
+
+const WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
+console.log(WEBPACK_ENV);
+
+
+
 module.exports = {
 	entry: './src/app.jsx',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/dist/',
+		publicPath: WEBPACK_ENV == 'dev'?'/dist/':'//s.jianliwu.com/admin-ve-fe/dist/',
 		filename: 'js/app.js'
 	},
 	// 固定路径配置
@@ -118,6 +124,13 @@ module.exports = {
 				changeOrigin: true,
 				pathRewrite: {
 					'^/manage': '/manage'
+				}
+			},
+			'/user':{
+				target: 'http://admintest.happymmall.com',
+				changeOrigin: true,
+				pathRewrite: {
+					'^/user': '/user'
 				}
 			}
 		}

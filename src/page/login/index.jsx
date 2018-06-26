@@ -47,7 +47,7 @@ class Login extends React.Component {
 				console.log(response.data)
 				if(response.data.status == 0){
 					// 登录成功
-					localStorage.setItem('username',response.data.data.username)
+					sessionStorage.setItem('username',response.data.data.username)
 					self.props.history.push(reduce);
 				}else if(response.data.status == 10){
 					//没有登录状态，强制登录

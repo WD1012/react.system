@@ -7,9 +7,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "node_modules/.bin/webpack-dev-server",
-    "dist": "node_modules/.bin/webpack -p"
+    "dist": "WEBPACK_ENV=online node_modules/.bin/webpack -p",
+    "dist_win": "set WEBPACK_ENV=online&& node_modules/.bin/webpack -p"
   },
   "devDependencies": {
+    "antd": "^3.5.1",
     "axios": "^0.18.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -24,6 +26,7 @@
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-lz-editor": "^0.12.1",
     "react-router-dom": "^4.2.2",
     "resolve": "^1.7.1",
     "sass-loader": "^6.0.6",
