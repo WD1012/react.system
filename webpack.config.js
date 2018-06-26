@@ -17,7 +17,7 @@ module.exports = {
 	entry: './src/app.jsx',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: WEBPACK_ENV == 'dev'?'/dist/':'//s.jianliwu.com/admin-ve-fe/dist/',
+		publicPath: WEBPACK_ENV == 'dev'?'/dist/':'//www.reactsystem.com/admin-ve-fe/dist/',
 		filename: 'js/app.js'
 	},
 	// 固定路径配置
